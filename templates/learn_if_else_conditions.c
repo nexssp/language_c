@@ -18,9 +18,9 @@ int main()
 //How if statement works in C programming?
 
 //For example:
-int number;
+int number = 0;
     printf("Enter a number(integer): ");
-    scanf("%d", &number);
+    scanf_s("%d", &number);
     // true if number is less than 0
     if (number < 0)
         {
