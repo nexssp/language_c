@@ -5,29 +5,32 @@ languageConfig.description =
 languageConfig.url = "https://clang.llvm.org";
 languageConfig.extensions = [".c"];
 
-const vcpkgIncludePath = require("child_process")
-  .execSync(`where vcpkg`)
-  .toString()
-  .trim();
-
-const VCpkgPath = `${require("path").dirname(
-  vcpkgIncludePath
-)}/installed/x86-windows/include`;
-
 languageConfig.builders = {
+  gcc: {
+    install: "scoop install gcc",
+    //build: "pkg --output <destinationFile> --out-path <destinationPath> <file>",
+    command: "gcc",
+    build: function() {
+      return "gcc";
+    },
+
+    args: `-std=c17 -o <destinationFile> <file>`,
+    help: ``
+  },
   llvm: {
     install: "scoop install llvm",
     //build: "pkg --output <destinationFile> --out-path <destinationPath> <file>",
     command: "clang",
     build: function() {
+      // Later to add vcpkg if needed.. see c++
+      // let triplet = "x64-windows";
+      // if (process.arch !== "x64") {
+      //   triplet = "x86-windows";
+      // }
+      // process.env.VCPKG_DEFAULT_TRIPLET = triplet;
       return "clang";
     },
-    // build: function() {
-    //   const path = require("path");
-    //   //take command from current folder
-    //   return `${path.join(__dirname, "customCompiler.win32.c.cmd")}`;
-    // },
-    args: `-std=c17 -Xclang -flto-visibility-public-std -Wall -isystem ${VCpkgPath} -o <destinationFile> <file>`,
+    args: `-std=c89 -o <destinationFile> <file>`,
     help: ``
   }
 };
