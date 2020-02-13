@@ -14,7 +14,7 @@ languageConfig.builders = {
       return "gcc";
     },
 
-    args: `-std=c17 -o <destinationFile> <file>`,
+    args: `-std=c17 -o <destinationFile> <file> && <destinationFile>`,
     help: ``
   },
   llvm: {
