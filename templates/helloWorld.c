@@ -1,4 +1,4 @@
-#include "readStdin.c"
+#include "3rdPartyLibraries/readStdin.c"
 #include "3rdPartyLibraries/cjson/cJSON.c"
 char *s_new_from_stdin(int beExact, size_t *len, size_t *size);
 
