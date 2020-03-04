@@ -4,7 +4,9 @@ languageConfig.description =
   "C is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, while a static type system prevents unintended operations. ";
 languageConfig.url = "https://clang.llvm.org";
 languageConfig.extensions = [".c"];
-
+languageConfig.founders = ["Dennis Ritchie"];
+languageConfig.developers = ["Brian Kernighan", "Dennis Ritchie"];
+languageConfig.years = ["1972"];
 languageConfig.builders = {
   gcc: {
     install: "scoop install gcc",
@@ -13,7 +15,6 @@ languageConfig.builders = {
     build: function() {
       return "gcc";
     },
-
     args: `-std=c17 -o <destinationFile> <file> && <destinationFile>`,
     help: ``
   },
