@@ -1,4 +1,7 @@
-let languageConfig = Object.assign({}, require("../config.win32"));
+let languageConfig = Object.assign(
+  {},
+  require(`../config.${process.platform}`)
+);
 languageConfig.title = "C";
 languageConfig.description =
   "C is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, while a static type system prevents unintended operations. ";
@@ -12,17 +15,17 @@ languageConfig.builders = {
     install: "scoop install gcc",
     //build: "pkg --output <destinationFile> --out-path <destinationPath> <file>",
     command: "gcc",
-    build: function() {
+    build: function () {
       return "gcc";
     },
     args: `-std=c17 -o <destinationFile> <file> && <destinationFile>`,
-    help: ``
+    help: ``,
   },
   llvm: {
     install: "scoop install llvm",
     //build: "pkg --output <destinationFile> --out-path <destinationPath> <file>",
     command: "clang",
-    build: function() {
+    build: function () {
       // Later to add vcpkg if needed.. see c++
       // let triplet = "x64-windows";
       // if (process.arch !== "x64") {
@@ -32,8 +35,8 @@ languageConfig.builders = {
       return "clang";
     },
     args: `-std=c89 -o <destinationFile> <file>`,
-    help: ``
-  }
+    help: ``,
+  },
 };
 languageConfig.compilers = {
   // gcc: {
@@ -58,8 +61,8 @@ languageConfig.languagePackageManagers = {
       require("child_process").execSync("vcpkg integrate project");
       console.log("initialized vcpkg project.");
     },
-    else: "vcpkg"
-  }
+    else: "vcpkg",
+  },
 };
 
 module.exports = languageConfig;
