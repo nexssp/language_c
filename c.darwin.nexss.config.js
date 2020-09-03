@@ -4,18 +4,14 @@ languageConfig.builders = {
   gcc: {
     install: "brew install gcc",
     command: "gcc",
-    build: function () {
-      return "gcc";
-    },
+    build: "gcc",
     args: `-std=c17 -o <destinationFile> <file> && <destinationFile>`,
     help: ``,
   },
   llvm: {
     install: "brew install llvm",
     command: "clang",
-    build: function () {
-      return "clang";
-    },
+    build: "clang",
     args: `-std=c89 -o <destinationFile> <file>`,
     help: ``,
   },

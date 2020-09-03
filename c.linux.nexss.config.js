@@ -5,9 +5,7 @@ languageConfig.builders = {
     install: "apt install -y gcc",
     //build: "pkg --output <destinationFile> --out-path <destinationPath> <file>",
     command: "gcc",
-    build: function () {
-      return "gcc";
-    },
+    build: "gcc",
     args: `-std=c17 -o <destinationFile> <file> && <destinationFile>`,
     help: ``,
   },
@@ -15,15 +13,7 @@ languageConfig.builders = {
     install: "apt-get install -y llvm",
     //build: "pkg --output <destinationFile> --out-path <destinationPath> <file>",
     command: "clang",
-    build: function () {
-      // Later to add vcpkg if needed.. see c++
-      // let triplet = "x64-windows";
-      // if (process.arch !== "x64") {
-      //   triplet = "x86-windows";
-      // }
-      // process.env.VCPKG_DEFAULT_TRIPLET = triplet;
-      return "clang";
-    },
+    build: "clang",
     args: `-std=c89 -o <destinationFile> <file>`,
     help: ``,
   },
