@@ -6,7 +6,7 @@ languageConfig.builders = {
     //build: "pkg --output <destinationFile> --out-path <destinationPath> <file>",
     command: "gcc",
     build: "gcc",
-    args: `-std=c17 -o <destinationFile> <file> && <destinationFile>`,
+    args: `-std=c11 -o <destinationFile> <file> && <destinationFile>`,
     help: ``,
   },
   llvm: {
